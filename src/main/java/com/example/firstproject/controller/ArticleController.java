@@ -22,9 +22,11 @@ public class ArticleController {
     @PostMapping("/articles/create")
     public String createArticle(ArticleForm form){ // form 데이터를 DTO 로 받기
         System.out.println(form.toString()); // DTO 에 form 데이터가 잘 담겼는지 확인
+
         // 1. DTO 를 엔티티로 변환
         Article article = form.toEntity();
         System.out.println(article.toString()); // DTO 가 엔티티로 잘 변환되는지 확인 출력
+
         // 2. 리파지터리로 엔티티를 DB에 저장
         Article saved = articleRepository.save(article);
         System.out.println(saved.toString()); // article 이 DB 에 잘 저장되는지 확인 출력
