@@ -22,33 +22,36 @@ class ArticleServiceTest {
     @Test
     @Transactional
     void index() {
-        // 1. 테스트 데이터 삽입
-        articleService.create(new ArticleForm(null, "가가가가", "1111"));
-        articleService.create(new ArticleForm(null, "나나나나", "2222"));
-        articleService.create(new ArticleForm(null, "다다다다", "3333"));
-
-        // 2. 예상 데이터
-        Article a = new Article(1L, "가가가가", "1111");
-        Article b = new Article(2L, "나나나나", "2222");
-        Article c = new Article(3L, "다다다다", "3333");
-        List<Article> expected = new ArrayList<>(Arrays.asList(a, b, c));
-
-        // 3. 실제 데이터
-        List<Article> articles = articleService.index();
-
-        // 4. 비교 및 검증
-        assertEquals(expected.size(), articles.size());
-//        // 1. 예상 데이터
+//        // 1. 테스트 데이터 삽입
+//        articleService.create(new ArticleForm(null, "가가가가", "1111"));
+//        articleService.create(new ArticleForm(null, "나나나나", "2222"));
+//        articleService.create(new ArticleForm(null, "다다다다", "3333"));
+//
+//        // 2. 예상 데이터
 //        Article a = new Article(1L, "가가가가", "1111");
 //        Article b = new Article(2L, "나나나나", "2222");
 //        Article c = new Article(3L, "다다다다", "3333");
-//        List<Article> expected = new ArrayList<Article>(Arrays.asList(a, b, c));
+//        List<Article> expected = new ArrayList<>(Arrays.asList(a, b, c));
 //
-//        // 2. 실제 데이터
+//        // 3. 실제 데이터
 //        List<Article> articles = articleService.index();
 //
-//        // 3. 비교 및 검증
-//        assertEquals(expected.toString(), articles.toString());
+//        // 4. 비교 및 검증
+//        assertEquals(expected.size(), articles.size());
+        // 1. 예상 데이터
+        Article a = new Article(1L, "가가가가", "1111");
+        Article b = new Article(2L, "나나나나", "2222");
+        Article c = new Article(3L, "다다다다", "3333");
+        Article d = new Article(4L, "당신의 인생 영화는?", "댓글 고");
+        Article e = new Article(5L, "당신의 소울 푸드는?", "댓글 고고");
+        Article f = new Article(6L, "당신의 취미는?", "댓글 고고고");
+        List<Article> expected = new ArrayList<Article>(Arrays.asList(a, b, c, d, e, f));
+
+        // 2. 실제 데이터
+        List<Article> articles = articleService.index();
+
+        // 3. 비교 및 검증
+        assertEquals(expected.toString(), articles.toString());
     }
 
     @Test
